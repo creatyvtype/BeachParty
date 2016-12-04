@@ -1,5 +1,5 @@
 {
-  "name": "Beach party",
+  "name": "beach-party",
   "version": "1.0.0",
   "description": "Tap the balls, it's a party!",
   "main": "webpack.config.js",
