@@ -1,11 +1,11 @@
 {
-  "name": "react-redux-framework",
+  "name": "Beach party",
   "version": "1.0.0",
-  "description": "Simple Framework to bootstrap react-redux app",
+  "description": "Tap the balls, it's a party!",
   "main": "webpack.config.js",
   "scripts": {
-    "dev": "./node_modules/.bin/webpack-dev-server --content-base app --hot --inline --historyApiFallback",
-    "postinstall": "webpack -p"
+    "postinstall": "webpack -p --hot",
+    "start": "node server.js"
   },
   "author": "Majd Murad",
   "license": "MIT",
