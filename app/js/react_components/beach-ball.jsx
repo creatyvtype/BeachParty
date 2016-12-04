@@ -4,7 +4,7 @@ import 'styles/beach-ball'
 
 export default class BeachBall extends React.Component {
     render() {
-        const { pos } = this.props
+        const { coordinates } = this.props
         var className = "beach-ball"
         if (this.props.size) {
             switch (this.props.size) {
@@ -23,7 +23,7 @@ export default class BeachBall extends React.Component {
         }
 
         return (
-            <div className={className} style={{left: pos[0], top:pos[1]}}>
+            <div className={className} style={{left: coordinates.x, top:coordinates.y}}>
             </div>
         )
     }
@@ -31,5 +31,5 @@ export default class BeachBall extends React.Component {
 
 BeachBall.propTypes = {
     size: React.PropTypes.string,
-    pos: React.PropTypes.array.isRequired
+    coordinates: React.PropTypes.object.isRequired
 }
