@@ -23,6 +23,7 @@ export default class BeachParty extends React.Component {
         this.handleClick = this.handleClick.bind(this)
     }
 
+    // Keeping this here to keep from BeachBall needing to be connected to store.
     handleClick(index) {
         this.props.getBallUrl(index)
     }
@@ -35,11 +36,8 @@ export default class BeachParty extends React.Component {
 
                 {balls.map((ball, index) => {
                     return <BeachBall
-                        key={index}
-                        coordinates={ ball.coordinates }
-                        size={ ball.size }
-                        imageUrl={ ball.imageUrl }
-                        loading={ ball.requests > 0 }
+                        key={ index }
+                        ball={ ball }
                         onClick={ this.handleClick.bind(null, index) }/>
                 })}
 
