@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux'
 
-import header from 'reducers/header'
+import beachParty from 'reducers/beach-party'
 export default combineReducers({
-    header
+    beachParty
 })
