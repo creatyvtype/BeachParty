@@ -1,7 +1,8 @@
 class Ball {
-    constructor(coordinates, size) {
+    constructor(coordinates, size, imageUrl=null) {
         this.coordinates = coordinates
         this.size = size
+        this.imageUrl = imageUrl
     }
 }
 
@@ -28,8 +29,24 @@ const initialState = {
     ]
 }
 
+function updateBalls(balls, index, url) {
+    const oldBall = balls[index]
+    const newBall = new Ball(oldBall.coordinates, oldBall.size, url )
+    return [
+        ...balls.slice(0, index),
+        balls[index] = newBall,
+        ...balls.slice(index + 1)
+    ]
+}
+
 export default function BeachParty(state=initialState, action) {
     switch (action.type) {
+        case "FETCH_BALL_FULFILLED":
+            debugger
+            return Object.assign({}, state)
+        case "CHANGE_BALL_IMAGE":
+            const balls = updateBalls(state.balls, action.index, action.url)
+            return Object.assign({}, state, {balls: balls})
         default: 
             return state
     }

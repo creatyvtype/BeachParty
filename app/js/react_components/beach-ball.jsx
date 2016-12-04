@@ -3,11 +3,18 @@ import React, { PropTypes } from 'react'
 import 'styles/beach-ball'
 
 export default class BeachBall extends React.Component {
+    constructor() {
+        super()
+        this.handleClick = this.handleClick.bind(this)
+    }
+    handleClick() {
+        this.props.onClick()
+    }
     render() {
-        const { coordinates } = this.props
+        const { coordinates, size, imageUrl } = this.props
         var className = "beach-ball"
-        if (this.props.size) {
-            switch (this.props.size) {
+        if ( size ) {
+            switch (size) {
                 case "small":
                     className += " small"
                     break
@@ -23,13 +30,26 @@ export default class BeachBall extends React.Component {
         }
 
         return (
-            <div className={className} style={{left: coordinates.x, top:coordinates.y}}>
+            <div className={ className } 
+                style={{ 
+                    left: coordinates.x, 
+                    top:coordinates.y,
+                }}>
+                <div className="ball-image"
+                    onClick={ this.handleClick }
+                    style={{
+                        backgroundImage: 'url(' + imageUrl + ')',
+                    }}>
+                </div>
             </div>
         )
     }
 }
 
+// Is there a way to add a Ball type to this?
 BeachBall.propTypes = {
-    size: React.PropTypes.string,
-    coordinates: React.PropTypes.object.isRequired
+    size: React.PropTypes.string.isRequired,
+    coordinates: React.PropTypes.object.isRequired,
+    onClick: React.PropTypes.func.isRequired,
+    imageUrl: React.PropTypes.string
 }
