@@ -1,3 +1,4 @@
+<<<<<<< f53c5848f411c5d043186f0a5882fffb9c0e02c0
 # BeachParty
 Click the balls, it's a party!
 
@@ -8,3 +9,6 @@ You may change the api/index base_url to point to the production API (beach-api.
 
 `npm install`  
 `npm start`
+=======
+# React-Redux Framework
+>>>>>>> Initial Commit
