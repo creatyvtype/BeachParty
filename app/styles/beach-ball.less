@@ -1,9 +1,27 @@
 @import (reference) "main";
 
+.ball(@size) {
+    width: @size;
+    height: @size;
+    border-radius: @size / 2;
+}
+
 .beach-ball {
-    width: 100px;
-    height: 100px;
-    border-radius: 50px;
+    position: absolute;
+    .ball(50px);
     background-color: gray;
     border: 1px solid black;
+
+}
+
+.small {
+    .ball(25px);
+}
+
+.large {
+    .ball(100px);
+}
+
+.x-large {
+    .ball(150px);
 }
