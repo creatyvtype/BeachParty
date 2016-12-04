@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react'
+import Loader from 'react-loader'
 
 import 'styles/beach-ball'
 
@@ -41,6 +42,8 @@ export default class BeachBall extends React.Component {
                         backgroundImage: 'url(' + imageUrl + ')',
                     }}>
                 </div>
+                <Loader loaded={ !this.props.loading } />
+
             </div>
         )
     }
@@ -51,5 +54,6 @@ BeachBall.propTypes = {
     size: React.PropTypes.string.isRequired,
     coordinates: React.PropTypes.object.isRequired,
     onClick: React.PropTypes.func.isRequired,
-    imageUrl: React.PropTypes.string
+    imageUrl: React.PropTypes.string,
+    loading: React.PropTypes.bool.isRequired
 }

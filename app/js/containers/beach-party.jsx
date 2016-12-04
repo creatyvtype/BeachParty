@@ -2,8 +2,6 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
-import * as API from 'api/index'
-
 import BeachBall from 'react_components/beach-ball'
 import { getBallUrl, changeBallImage } from 'actions/index'
 
@@ -14,7 +12,7 @@ function mapStoreToProps(store) {
 }
 
 function mapDispatchToProps(dispatch) {
-    return bindActionCreators({ getBallUrl, changeBallImage }, dispatch)
+    return bindActionCreators({ getBallUrl, }, dispatch)
 }
 
 @connect(mapStoreToProps, mapDispatchToProps)
@@ -26,10 +24,7 @@ export default class BeachParty extends React.Component {
     }
 
     handleClick(index) {
-        API.getBall()
-        .then((response) => {
-            this.props.changeBallImage(index, response.data.ball_url)
-        })
+        this.props.getBallUrl(index)
     }
 
     render() {
@@ -44,6 +39,7 @@ export default class BeachParty extends React.Component {
                         coordinates={ ball.coordinates }
                         size={ ball.size }
                         imageUrl={ ball.imageUrl }
+                        loading={ ball.loading }
                         onClick={ this.handleClick.bind(null, index) }/>
                 })}
 
