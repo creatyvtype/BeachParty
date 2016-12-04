@@ -1,9 +1,9 @@
 class Ball {
-    constructor(coordinates, size, imageUrl=null, loading=false) {
+    constructor(coordinates, size, imageUrl=null, requests=0) {
         this.coordinates = coordinates
         this.size = size
         this.imageUrl = imageUrl
-        this.loading = loading
+        this.requests = requests
     }
 }
 
@@ -32,7 +32,7 @@ const initialState = {
 
 function updateBallUrl(balls, index, url) {
     const oldBall = balls[index]
-    const newBall = new Ball(oldBall.coordinates, oldBall.size, url )
+    const newBall = new Ball(oldBall.coordinates, oldBall.size, url, oldBall.requests )
     return [
         ...balls.slice(0, index),
         balls[index] = newBall,
@@ -40,9 +40,10 @@ function updateBallUrl(balls, index, url) {
     ]
 }
 
-function updateBallLoading(balls, index, loading) {
+function updateBallLoading(balls, index, requestChange ) {
     const oldBall = balls[index]
-    const newBall = new Ball(oldBall.coordinates, oldBall.size, oldBall.imageUrl, loading)
+    const newRequests = oldBall.requests + requestChange
+    const newBall = new Ball(oldBall.coordinates, oldBall.size, oldBall.imageUrl, newRequests)
     return [
         ...balls.slice(0, index),
         balls[index] = newBall,
@@ -58,11 +59,11 @@ export default function BeachParty(state=initialState, action) {
             })
         case "START_BALL_LOADER":
             return Object.assign({}, state, {
-                balls: updateBallLoading(state.balls, action.index, true)
+                balls: updateBallLoading(state.balls, action.index, 1)
             })
         case "STOP_BALL_LOADER":
             return Object.assign({}, state, {
-                balls: updateBallLoading(state.balls, action.index, false)
+                balls: updateBallLoading(state.balls, action.index, -1)
             })    
         default: 
             return state

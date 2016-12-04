@@ -39,7 +39,7 @@ export default class BeachParty extends React.Component {
                         coordinates={ ball.coordinates }
                         size={ ball.size }
                         imageUrl={ ball.imageUrl }
-                        loading={ ball.loading }
+                        loading={ ball.requests > 0 }
                         onClick={ this.handleClick.bind(null, index) }/>
                 })}
 
