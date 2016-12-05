@@ -1,7 +1,7 @@
 # BeachParty
 Click the balls, it's a party!
 
-(FAILING) For the deployed version, [join the party](http://beach-party.herokuapp.com)  
+For the deployed version, [join the party](http://beach-party.herokuapp.com)  
 
 To run locally:
 You may change the api/index base_url to point to the production API (beach-api.herokuap.com). Otherwise, clone the [Beach Party API](https://github.com/creatyvtype/BeachPartyApi) and run locally. Instructions are there.
@@ -20,3 +20,5 @@ Personal critiques / points of improvement:
 
 A note about the freamwork:  
 I created this ongoing bootstrapped framework from a combination of tutorials and personal sweat and tears for a different project. I held onto the basics of it so that I could reuse it at will. The repo can be found [here](https://github.com/creatyvtype/react-redux-framework)
+
+(UPDATE): I got the deployed version to work. Seemed to do with the node_modules/ folder being ignored. Will look into that. In deployment it seems I failed the portion where the async calls are queued one after another. This appeared to work as desired locally, but as I said before, I didn't know how it worked, and that caused the problem in production. Future steps would be to research a solution using axios or attempt a different library. If nothing came to fruition, I would have to build my own structure to queue the calls.
